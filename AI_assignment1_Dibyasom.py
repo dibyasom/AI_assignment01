@@ -1,5 +1,5 @@
 import numpy as np
-from matplotlib_venn import venn2, venn2_circles, venn2_unweighted
+from matplotlib_venn import venn3, venn3_circles
 from matplotlib import pyplot as py
 
 result = list()
@@ -55,9 +55,13 @@ if query[-1]=='?':
         print("Inference: It's a contingency!")
         print("Result: NO")
         
-    venn2(subsets = (0, resultf, resultt), set_labels = ('Study well :)', 'Do not study well :('), set_colors=('purple', 'skyblue'), alpha = 0.5)
-    venn2_circles(subsets = (0, resultf, resultt), linestyle='dashed', linewidth=2, color='k')
-    py.title("Universal Set = Human    Value scaled to test-population = 4")
+    #Visualizing the set!    
+    venn3(subsets = (1, 0, 1,0, 2, 0, 0), set_labels = ('Human', 'Study well', 'Do not study well'), alpha = 0.5);
+    c = venn3_circles(subsets = (1, 0, 1, 0, 2, 0, 0), linestyle='dashed', linewidth=1, color='grey')
+    c[0].set_lw(5.0)
+    c[1].set_lw(2.0)
+    c[2].set_lw(2.0)
+    py.title("Venn representation of the scenario!")
     py.show()
 
 
